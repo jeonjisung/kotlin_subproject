@@ -10,6 +10,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.kotlin_subproject.databinding.ActivityLoginBinding
 import com.example.kotlin_subproject.databinding.ActivityMainBinding
+import com.example.kotlin_subproject.singleton.mGoogleSignInClient
+import com.example.kotlin_subproject.singleton.resultLauncher
 import com.example.kotlin_subproject.singleton.showLog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -19,9 +21,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 class Login : AppCompatActivity() {
-
-    lateinit var mGoogleSignInClient: GoogleSignInClient
-    lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     var loginBinding: ActivityLoginBinding? = null
 
@@ -40,6 +39,7 @@ class Login : AppCompatActivity() {
 
         setResultSignUp()
 
+        // todo: .requestIdtoken()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
